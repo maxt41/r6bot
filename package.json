@@ -1,0 +1,17 @@
+{
+  "name": "botjs",
+  "version": "1.0.0",
+  "description": "discord bot",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@r6stats/node": "^4.0.0-alpha3",
+    "@vince144/r6-api": "^2.2.2",
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0"
+  }
+}
