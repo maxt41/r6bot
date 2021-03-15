@@ -116,7 +116,8 @@ client.on("message", async (message) => {
           .setDescription(rank)
           .addFields(
               { name: 'mmr', value: String(stats.map(o  => o.mmr)), inline: true },
-              { name: 'max mmr', value: String(stats.map(o  => o.max_mmr)), inline: true })
+              { name: 'max mmr', value: String(stats.map(o  => o.max_mmr)), inline: true },
+              { name: 'mmr change', value: String(stats.map(o  => o.last_match_mmr_change)), inline: true })
           .setTimestamp()
           .setFooter('R6 Slut');
         message.channel.send(statsEmbed);
