@@ -134,8 +134,7 @@ client.on("message", async (message) => {
   if(message.content.startsWith("!help")) {
     const statsEmbed = new Discord.MessageEmbed()
           .setColor('#B980ca')
-          .setTitle("Help")
-          .setDescription("Commands")
+          .setTitle("Commands")
           .addFields(
               { name: 'find', value: "Shows the ranked stats for that player."},
               { name: 'help', value: "Shows this help menu."})
