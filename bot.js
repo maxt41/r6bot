@@ -9,11 +9,17 @@ let platform = 'uplay';
 let season = '1';
 
 let account = r6api.createAccount(email, password, platform);
+
 async function fetchStats(user) { 
-   let session = await r6api.createSession(account).catch(e => { console.error(e) }); 
-   let player = await r6api.createPlayer(user, platform, session).catch(e => { console.error(e) }); 
-   let stats = await r6api.getStatsBySeason(player, session, season).catch(e => { console.error(e) });
-   return stats
+  try {
+    let session = await r6api.createSession(account).catch(e => { console.error(e) }); 
+    let player = await r6api.createPlayer(user, platform, session).catch(e => { console.error(e) }); 
+    let stats = await r6api.getStatsBySeason(player, session, season).catch(e => { console.error(e) });
+    return stats
+  } catch {
+    console.log("error")
+  }
+   
   }
 
 
