@@ -129,8 +129,21 @@ client.on("message", async (message) => {
           .setFooter('R6 Slut');
         message.channel.send(statsEmbed);
       }
-      } 
     } 
+  } 
+  if(message.content.startsWith("!help")) {
+    const statsEmbed = new Discord.MessageEmbed()
+          .setColor('#B980ca')
+          .setTitle("Help")
+          .setDescription("Commands")
+          .addFields(
+              { name: 'find', value: "Shows the ranked stats for that player."},
+              { name: 'help', value: "Shows this help menu."})
+          .setTimestamp()
+          .setFooter('R6 Slut');
+        message.channel.send(statsEmbed);
+  }
+
 });
  
 client.login(process.env.token);
