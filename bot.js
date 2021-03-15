@@ -20,7 +20,7 @@ async function fetchStats(user) {
     console.log("error")
   }
    
-  }
+}
 
 
 client.on("ready", () => {
