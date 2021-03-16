@@ -11,6 +11,7 @@
   "dependencies": {
     "@vince144/r6-api": "^2.2.2",
     "discord.js": "^12.5.1",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "r6api.js": "^1.7.0"
   }
 }

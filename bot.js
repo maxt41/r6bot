@@ -16,10 +16,9 @@ async function fetchStats(user) {
     let player = await r6api.createPlayer(user, platform, session).catch(e => { console.error(e) }); 
     let stats = await r6api.getStatsBySeason(player, session, season).catch(e => { console.error(e) });
     return stats
-  } catch {
-    console.log("error")
+  } catch (e) {
+    console.log(e)
   }
-   
 }
 
 client.on("ready", () => {
@@ -117,7 +116,10 @@ client.on("message", async (message) => {
           .addFields(
               { name: 'mmr', value: String(stats.map(o  => o.mmr)), inline: true },
               { name: 'max mmr', value: String(stats.map(o  => o.max_mmr)), inline: true },
-              { name: 'mmr change', value: String(stats.map(o  => o.last_match_mmr_change)), inline: true })
+              { name: 'mmr change', value: String(stats.map(o  => o.last_match_mmr_change)), inline: true },
+              { name: 'Kills', value: String(stats.map(o  => o.kills)), inline: true },
+              { name: 'Deaths', value: String(stats.map(o  => o.deaths)), inline: true },
+              { name: 'K/D', value: (parseInt(String(stats.map(o  => o.kills))) / parseInt(String(stats.map(o  => o.deaths)))).toFixed(2), inline: true })
           .setTimestamp()
           .setFooter('R6 Slut');
         message.channel.send(statsEmbed);
@@ -129,7 +131,14 @@ client.on("message", async (message) => {
           .setFooter('R6 Slut');
         message.channel.send(statsEmbed);
       }
-    } 
+    } else {
+      const statsEmbed = new Discord.MessageEmbed()
+          .setColor('#B980ca')
+          .setTitle('User not found')
+          .setTimestamp()
+          .setFooter('R6 Slut');
+        message.channel.send(statsEmbed);
+    }
   } 
   if(message.content.startsWith("!help")) {
     const statsEmbed = new Discord.MessageEmbed()
@@ -142,7 +151,6 @@ client.on("message", async (message) => {
           .setFooter('R6 Slut');
         message.channel.send(statsEmbed);
   }
-
 });
  
 client.login(process.env.token);
