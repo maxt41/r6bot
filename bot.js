@@ -117,9 +117,9 @@ client.on("message", async (message) => {
               { name: 'mmr', value: String(stats.map(o  => o.mmr)), inline: true },
               { name: 'max mmr', value: String(stats.map(o  => o.max_mmr)), inline: true },
               { name: 'mmr change', value: String(stats.map(o  => o.last_match_mmr_change)), inline: true },
-              { name: 'Kills', value: String(stats.map(o  => o.kills)), inline: true },
-              { name: 'Deaths', value: String(stats.map(o  => o.deaths)), inline: true },
-              { name: 'K/D', value: (parseInt(String(stats.map(o  => o.kills))) / parseInt(String(stats.map(o  => o.deaths)))).toFixed(2), inline: true })
+              { name: 'K/D', value: (parseFloat(String(stats.map(o  => o.kills))) / parseFloat(String(stats.map(o  => o.deaths)))).toFixed(2), inline: true },
+              { name: 'kills', value: String(stats.map(o  => o.kills)), inline: true },
+              { name: 'deaths', value: String(stats.map(o  => o.deaths)), inline: true })
           .setTimestamp()
           .setFooter('R6 Slut');
         message.channel.send(statsEmbed);
